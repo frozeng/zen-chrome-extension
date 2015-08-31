@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Zen Broadband Usage Login</title>
+    <link href="../css/bootstrap-3.3.5.min.css" rel="stylesheet">
+    <link href="../css/base.css" rel="stylesheet">
+  </head>
+  <body>
+    <h3>Zen Broadband Usage Login</h3>
+    <form>
+      <label for="email">Username</label>
+      <input
+        class="form-control"
+        type="email"
+        id="email"
+        required
+      >
+      <label for="password">Password</label>
+      <input
+        class="form-control"
+        type="password"
+        id="password"
+        required
+      >
+      <div class="alert alert-danger hidden js-error"></div>
+      <button
+        class="btn btn-success pull-right space-top js-submit"
+        type="button"
+      >Log In</button>
+      <span class="help-block">Note: The Zen Broadband Usage Checker will update the last sign-in date for your account on the Zen Website.</span>
+    </form>
+    <script src="../js/jquery-2.1.4.min.js"></script>
+    <script src="../js/login.js"></script>
+  </body>
+</html>
+

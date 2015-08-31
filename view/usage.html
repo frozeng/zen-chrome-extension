@@ -1,0 +1,58 @@
+<!doctype html>
+<html>
+  <head>
+	<title>Zen Broadband Usage Viewer</title>
+	<link href="../css/bootstrap-3.3.5.min.css" rel="stylesheet">
+	<link href="../css/base.css" rel="stylesheet">
+  </head>
+  <body>
+	<h3>Zen Broadband Usage Viewer</h3>
+	
+<div class="progress js-loading">
+	<div 
+		class="progress-bar progress-bar-striped active" 
+		role="progressbar" 
+		style="width: 100%">
+		Loading Stats...
+	</div>
+</div>
+
+	<table class="table teable-condensed hidden">
+		<tbody>
+			<tr>
+				<td colspan="2" data-stats="username_product_name"></td>
+			</tr>
+			<tr>
+				<th>D/L Allowance</th>
+				<td data-stats="account_allowance_gb" class="text-right"></td>
+			</tr>
+			<tr>
+				<th>D/L Usage Bank</th>
+				<td data-stats="bank_available_gb" class="text-right"></td>
+			</tr>
+			<tr>
+				<th>D/L Amount Used</th>
+				<td data-stats="total_used_gb" class="text-right"></td>
+			</tr>
+			<tr>
+				<th>D/L Amount Remaining</th>
+				<td data-stats="remaining_calc_gb" class="text-right"></td>
+			</tr>
+			<tr>
+				<th>D/L Percentage Used</th>
+				<td data-stats="percentage_calc" class="text-right"></td>
+			</tr>
+			<tr>
+				<th>U/L Amount</th>
+				<td data-stats="upload_usage_used_gb" class="text-right"></td>
+			</tr>
+		</tbody>
+	</table>
+	<a
+		class="btn btn-link btn-sm pull-right js-logout"
+	>Logout</a>
+	<script src="../js/jquery-2.1.4.min.js"></script>
+	<script src="../js/usage.js"></script>
+  </body>
+</html>
+
