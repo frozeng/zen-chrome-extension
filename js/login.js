@@ -29,7 +29,7 @@ $('.js-submit').on('click',function(e){
  */
 function renderLogin(response) {
 	if (response === 'valid') {
-		//off to the useage page
+		//off to the usage page
 		window.location.href="usage.html";
 	} else {
 		$('.js-error').removeClass('hidden').text(response);

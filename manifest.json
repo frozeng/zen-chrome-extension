@@ -3,7 +3,7 @@
 
   "name": "Zen Broadband Usage Viewer",
   "description": "Allows Zen's Chrome users to view their bandwidth usage",
-  "version": "1.0.1",
+  "version": "1.0.2",
 
   "browser_action": {
     "default_icon": "img/icon.png",
@@ -13,6 +13,6 @@
     "https://webservices.zen.co.uk/"
   ],
   "background": {
-    "scripts": ["js/ZenUsage.js","js/ChromeZenUseage.js"]
+    "scripts": ["js/ZenUsage.js","js/ChromeZenUsage.js"]
   }
 }
