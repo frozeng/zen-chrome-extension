@@ -25,13 +25,11 @@ var _stats = null;
 var _getStateCallback = function(){};
 
 /**
- *
+ * Callback for the login page
  */
 var _testLoginCallback = function(){};
 
 chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
-	chrome.extension.getBackgroundPage().console.log(request.type);
-
 	if (request.type === 'getStats') {
 		_getStateCallback = sendResponse;
 
@@ -74,8 +72,6 @@ function authcallback (message,o) {
 function callback_from_zen_usage(){
 	var state = _ZenUsage.GetState();
 
-	chrome.extension.getBackgroundPage().console.log(state);
-
 	//Authenticate state
 	if(state === "auth_complete"){
 		//login page requires callback of 'valid' to move to usage view
@@ -86,9 +82,7 @@ function callback_from_zen_usage(){
 	//FetchAccountList state
 	} else if (state === "account_list_complete"){
 		var accounts = _ZenUsage.GetAccounts();
-		
-		chrome.extension.getBackgroundPage().console.log(accounts);
-			
+					
 		//returns object with username as key and product as property
 		for(var acc in accounts){
 			//for simplicity just take the last account in the object
@@ -108,8 +102,6 @@ function callback_from_zen_usage(){
 		_stats = _ZenUsage.GetStats()[_account];
 
 		_stats = formatStats(_stats);
-
-		chrome.extension.getBackgroundPage().console.log(_stats);
 
 		updateBadge();
 
@@ -154,14 +146,14 @@ function formatStats(stats) {
  * Update the badge displayed over the icon
  */
 function updateBadge() {
-	//can only support 4 chars on badge
+	//can only support 4 chars on badge so strip off decimals
 	var percentageUsed = Math.round(_stats.percentage_calc);
 	
 	//set the colour (defaults to red for > 90)
 	if (percentageUsed < 75 ) {
-		chrome.browserAction.setBadgeBackgroundColor({color:'#FFCC66'});	//orange
-	} else if (percentageUsed < 90 ) {
 		chrome.browserAction.setBadgeBackgroundColor({color:'#00FF00'});	//green
+	} else if (percentageUsed < 90 ) {
+		chrome.browserAction.setBadgeBackgroundColor({color:'#FFCC66'});	//orange
 	}
 
 	chrome.browserAction.setBadgeText({text: String(percentageUsed)+'%'});
@@ -171,7 +163,6 @@ function updateBadge() {
  * Called from login view with user provided auth credientials
  */
 function login(username, password){
-	chrome.extension.getBackgroundPage().console.log('checkLogin');
 
 	//set the username and password in the persistent store
 	localStorage["_username"] = username;
@@ -191,7 +182,6 @@ function logout() {
 }
 
 function initiate(){
-	chrome.extension.getBackgroundPage().console.log('initiate');
 
 	chrome.browserAction.setBadgeText({text: ''});
 
@@ -217,8 +207,6 @@ function initiate(){
 		'Chrome Toolbar',
 		chrome.app.getDetails().version,
 		function(message, o){
-			chrome.extension.getBackgroundPage().console.log(message);
-			chrome.extension.getBackgroundPage().console.log(o);
 			authcallback(message, o);
 		}
 	);
